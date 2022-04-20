@@ -11,8 +11,8 @@ namespace Apartment_Management.Data
         public DbSet<Flat> Flats { get; set; }
         public DbSet<FlatAssignment> FlatAssignments { get; set; }
         public DbSet<Period> Periods { get; set; }
-        public DbSet<BillType> BillTypes { get; set; }
-        public DbSet<Bill> Bills { get; set; }
+        public DbSet<InvoiceType> BillTypes { get; set; }
+        public DbSet<Invoice> Bills { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<Payment> Payments { get; set; }
         public DbSet<BankCard> BankCards { get; set; }
@@ -45,21 +45,21 @@ namespace Apartment_Management.Data
                 .IsUnique();
 
             modelBuilder.Entity<FlatAssignment>()
-                .HasKey(fa => new {fa.FlatID, fa.UserID});
+                .HasKey(fa => new { fa.FlatID, fa.UserID });
 
             modelBuilder.Entity<Period>()
                 .ToTable("Period")
                 .HasIndex(p => p.Name)
                 .IsUnique();
 
-            modelBuilder.Entity<BillType>()
+            modelBuilder.Entity<InvoiceType>()
                 .ToTable("BillType")
                 .HasIndex(bt => bt.Name)
                 .IsUnique();
 
-            modelBuilder.Entity<Bill>()
-                .ToTable("Bill")
-                .HasKey(b => new { b.FlatID, b.PeriodID, b.BillTypeID });
+            modelBuilder.Entity<Invoice>()
+                .ToTable("Invoice")
+                .HasKey(b => new { b.FlatID, b.PeriodID, b.InvoiceTypeID });
 
             modelBuilder.Entity<Message>().ToTable("Message");
 

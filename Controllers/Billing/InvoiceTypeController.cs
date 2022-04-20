@@ -8,52 +8,52 @@ using Microsoft.EntityFrameworkCore;
 using Apartment_Management.Data;
 using Apartment_Management.Models;
 
-namespace Apartment_Management.Controllers
+namespace Apartment_Management.Controllers.Billing
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class FlatController : ControllerBase
+    public class InvoiceTypeController : ControllerBase
     {
         private readonly AppDbContext _context;
 
-        public FlatController(AppDbContext context)
+        public InvoiceTypeController(AppDbContext context)
         {
             _context = context;
         }
 
-        // GET: api/Flat
+        // GET: api/InvoiceType
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Flat>>> GetFlats()
+        public async Task<ActionResult<IEnumerable<InvoiceType>>> GetBillTypes()
         {
-            return await _context.Flats.ToListAsync();
+            return await _context.BillTypes.ToListAsync();
         }
 
-        // GET: api/Flat/5
+        // GET: api/InvoiceType/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Flat>> GetFlat(int id)
+        public async Task<ActionResult<InvoiceType>> GetInvoiceType(int id)
         {
-            var flat = await _context.Flats.FindAsync(id);
+            var invoiceType = await _context.BillTypes.FindAsync(id);
 
-            if (flat == null)
+            if (invoiceType == null)
             {
                 return NotFound();
             }
 
-            return flat;
+            return invoiceType;
         }
 
-        // PUT: api/Flat/5
+        // PUT: api/InvoiceType/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutFlat(int id, Flat flat)
+        public async Task<IActionResult> PutInvoiceType(int id, InvoiceType invoiceType)
         {
-            if (id != flat.ID)
+            if (id != invoiceType.ID)
             {
                 return BadRequest();
             }
 
-            _context.Entry(flat).State = EntityState.Modified;
+            _context.Entry(invoiceType).State = EntityState.Modified;
 
             try
             {
@@ -61,7 +61,7 @@ namespace Apartment_Management.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!FlatExists(id))
+                if (!InvoiceTypeExists(id))
                 {
                     return NotFound();
                 }
@@ -74,37 +74,37 @@ namespace Apartment_Management.Controllers
             return NoContent();
         }
 
-        // POST: api/Flat
+        // POST: api/InvoiceType
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Flat>> PostFlat(Flat flat)
+        public async Task<ActionResult<InvoiceType>> PostInvoiceType(InvoiceType invoiceType)
         {
-            _context.Flats.Add(flat);
+            _context.BillTypes.Add(invoiceType);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetFlat", new { id = flat.ID }, flat);
+            return CreatedAtAction("GetInvoiceType", new { id = invoiceType.ID }, invoiceType);
         }
 
-        // DELETE: api/Flat/5
+        // DELETE: api/InvoiceType/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Flat>> DeleteFlat(int id)
+        public async Task<ActionResult<InvoiceType>> DeleteInvoiceType(int id)
         {
-            var flat = await _context.Flats.FindAsync(id);
-            if (flat == null)
+            var invoiceType = await _context.BillTypes.FindAsync(id);
+            if (invoiceType == null)
             {
                 return NotFound();
             }
 
-            _context.Flats.Remove(flat);
+            _context.BillTypes.Remove(invoiceType);
             await _context.SaveChangesAsync();
 
-            return flat;
+            return invoiceType;
         }
 
-        private bool FlatExists(int id)
+        private bool InvoiceTypeExists(int id)
         {
-            return _context.Flats.Any(e => e.ID == id);
+            return _context.BillTypes.Any(e => e.ID == id);
         }
     }
 }

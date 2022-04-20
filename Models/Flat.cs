@@ -13,7 +13,7 @@ namespace Apartment_Management.Models
 
     public class Flat
     {
-        public int FlatID { get; set; }
+        public int ID { get; set; }
         [Required]
         public string BlockCode { get; set; }
         public bool IsFull { get; set; }
@@ -25,7 +25,7 @@ namespace Apartment_Management.Models
         public int DoorNum { get; set; }
         public int UserID { get; set; }
         public User User { get; set; }
-        public ICollection<Bill> Bills { get; set; }
+        public ICollection<Invoice> Invoices { get; set; }
         public ICollection<Payment> Payments { get; set; }
     }
 }

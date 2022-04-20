@@ -2,7 +2,7 @@
 
 namespace Apartment_Management.Models
 {
-    public class BillType
+    public class InvoiceType
     {
         public int ID { get; set; }
 
