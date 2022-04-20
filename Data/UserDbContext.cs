@@ -27,10 +27,14 @@ namespace Apartment_Management.Data
 
             modelBuilder.Entity<Flat>().ToTable("Flat");
 
-            modelBuilder.Entity<FlatAssignment>().ToTable("FlatAssignment");
-
             modelBuilder.Entity<FlatAssignment>()
+                .ToTable("FlatAssignment")
                 .HasIndex(f => f.FlatID)
+                .IsUnique();
+
+            modelBuilder.Entity<Period>()
+                .ToTable("Period")
+                .HasIndex(p => p.Name)
                 .IsUnique();
         }
 
