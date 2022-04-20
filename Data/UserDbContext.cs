@@ -8,6 +8,16 @@ namespace Apartment_Management.Data
         public UserDbContext(DbContextOptions<UserDbContext> options) : base(options) { }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<Flat> Flats { get; set; }
+        public DbSet<FlatAssignment> FlatAssignments { get; set; }
+        public DbSet<Period> Periods { get; set; }
+        public DbSet<BillType> BillTypes { get; set; }
+        public DbSet<Bill> Bills { get; set; }
+        public DbSet<Message> Messages { get; set; }
+        public DbSet<Payment> Payments { get; set; }
+        public DbSet<BankCard> BankCards { get; set; }
+        public DbSet<Vehicle> Vehicles { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
