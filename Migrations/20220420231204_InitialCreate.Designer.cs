@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Apartment_Management.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220420220859_InitialCreate")]
+    [Migration("20220420231204_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -310,7 +310,7 @@ namespace Apartment_Management.Migrations
             modelBuilder.Entity("Apartment_Management.Models.Flat", b =>
                 {
                     b.HasOne("Apartment_Management.Models.User", "User")
-                        .WithMany("Flats")
+                        .WithMany()
                         .HasForeignKey("UserID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -325,9 +325,9 @@ namespace Apartment_Management.Migrations
                         .IsRequired();
 
                     b.HasOne("Apartment_Management.Models.User", "User")
-                        .WithMany()
+                        .WithMany("FlatAssignments")
                         .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 

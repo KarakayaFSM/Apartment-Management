@@ -47,6 +47,11 @@ namespace Apartment_Management.Data
             modelBuilder.Entity<FlatAssignment>()
                 .HasKey(fa => new { fa.FlatID, fa.UserID });
 
+            modelBuilder.Entity<FlatAssignment>()
+                .HasOne(fa => fa.User)
+                .WithMany(u => u.FlatAssignments)
+                .OnDelete(DeleteBehavior.Restrict);
+
             modelBuilder.Entity<Period>()
                 .ToTable("Period")
                 .HasIndex(p => p.Name)

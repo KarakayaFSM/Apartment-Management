@@ -308,7 +308,7 @@ namespace Apartment_Management.Migrations
             modelBuilder.Entity("Apartment_Management.Models.Flat", b =>
                 {
                     b.HasOne("Apartment_Management.Models.User", "User")
-                        .WithMany("Flats")
+                        .WithMany()
                         .HasForeignKey("UserID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -323,9 +323,9 @@ namespace Apartment_Management.Migrations
                         .IsRequired();
 
                     b.HasOne("Apartment_Management.Models.User", "User")
-                        .WithMany()
+                        .WithMany("FlatAssignments")
                         .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
