@@ -8,6 +8,12 @@
   <ItemGroup>
     <Compile Remove="Migrations\20220420220615_InitialCreate.cs" />
     <Compile Remove="Migrations\20220420220615_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20220420220859_InitialCreate.cs" />
+    <Compile Remove="Migrations\20220420220859_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20220420224339_InitialCreate.cs" />
+    <Compile Remove="Migrations\20220420224339_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20220420225307_InitialCreate.cs" />
+    <Compile Remove="Migrations\20220420225307_InitialCreate.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,7 +27,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\Billing\" />
     <Folder Include="Migrations\" />
   </ItemGroup>
 
