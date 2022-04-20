@@ -5,10 +5,11 @@ namespace Apartment_Management.Models
 {
     public class Period
     {
-        [Required]
         public int ID { get; set; }
+        
         [Required]
         public string Name { get; set; }
+        
         [Required]
         public DateTime PeriodDate { get; set; }
     }

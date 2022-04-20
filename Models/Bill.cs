@@ -9,6 +9,7 @@ namespace Apartment_Management.Models
         public int BillTypeID { get; set; }
         public int FlatID { get; set; }
 
+        [Required]
         [Range(1, double.MaxValue)]
         public decimal Amount { get; set; }
         

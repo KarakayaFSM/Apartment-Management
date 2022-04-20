@@ -6,8 +6,11 @@ namespace Apartment_Management.Models
     {
         public int ID { get; set; }
         public int FlatID { get; set; }
+        
+        [Required]
         [Range(1, double.MaxValue)]
         public decimal Amount { get; set; }
+
         public Flat Flat { get; set; }
     }
 }
