@@ -48,9 +48,9 @@ namespace Apartment_Management.Data
                 .ToTable("Bill")
                 .HasKey(b => new { b.FlatID, b.PeriodID, b.BillTypeID });
 
-            modelBuilder.Entity<Message>()
-                .ToTable("Message");
+            modelBuilder.Entity<Message>().ToTable("Message");
 
+            modelBuilder.Entity<Payment>().ToTable("Payment");
         }
 
     }

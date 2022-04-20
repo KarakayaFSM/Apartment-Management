@@ -21,6 +21,6 @@ namespace Apartment_Management.Models
         public int UserID { get; set; }
         public User User { get; set; }
         public ICollection<Bill> Bills { get; set; }
-
+        public ICollection<Payment> Payments { get; set; }
     }
 }
