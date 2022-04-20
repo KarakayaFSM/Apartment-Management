@@ -41,6 +41,10 @@ namespace Apartment_Management.Data
                 .ToTable("BillType")
                 .HasIndex(bt => bt.Name)
                 .IsUnique();
+
+            modelBuilder.Entity<Bill>()
+                .ToTable("Bill")
+                .HasKey(b => new { b.FlatID, b.PeriodID, b.BillTypeID });
         }
 
     }
