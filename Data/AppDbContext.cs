@@ -36,12 +36,16 @@ namespace Apartment_Management.Data
 
             modelBuilder.Entity<Flat>()
                 .ToTable("Flat")
-                .HasKey(f => new {f.BlockCode, f.DoorNum});
+                .HasIndex(f => new { f.BlockCode, f.DoorNum })
+                .IsUnique();
 
             modelBuilder.Entity<FlatAssignment>()
                 .ToTable("FlatAssignment")
                 .HasIndex(f => f.FlatID)
                 .IsUnique();
+
+            modelBuilder.Entity<FlatAssignment>()
+                .HasKey(fa => new {fa.FlatID, fa.UserID});
 
             modelBuilder.Entity<Period>()
                 .ToTable("Period")
