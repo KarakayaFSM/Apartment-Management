@@ -31,7 +31,7 @@ namespace Apartment_Management.Models
         [Column(name: "ManagerId")]
         public int ManagerId { get; set; }
 
-        public ICollection<Flat> Flats { get; set; }
+        public ICollection<FlatAssignment> FlatAssignments { get; set; }
         public ICollection<Message> Messages { get; set; }
         public ICollection<BankCard> Cards { get; set; }
         public ICollection<Vehicle> Vehicles { get; set; }
