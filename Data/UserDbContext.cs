@@ -53,6 +53,11 @@ namespace Apartment_Management.Data
             modelBuilder.Entity<Payment>().ToTable("Payment");
 
             modelBuilder.Entity<BankCard>().ToTable("BankCard");
+
+            modelBuilder.Entity<Vehicle>()
+                .ToTable("Vehicle")
+                .HasIndex(v => v.Plate)
+                .IsUnique();
         }
 
     }
