@@ -1,4 +1,6 @@
-﻿namespace Apartment_Management.Models
+﻿using System.Collections.Generic;
+
+namespace Apartment_Management.Models
 {
 
     public enum FlatSize { 
@@ -18,6 +20,7 @@
         public int DoorNum { get; set; }
         public int UserID { get; set; }
         public User User { get; set; }
+        public ICollection<Bill> Bills { get; set; }
 
     }
 }
