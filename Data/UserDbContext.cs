@@ -36,6 +36,11 @@ namespace Apartment_Management.Data
                 .ToTable("Period")
                 .HasIndex(p => p.Name)
                 .IsUnique();
+
+            modelBuilder.Entity<BillType>()
+                .ToTable("BillType")
+                .HasIndex(bt => bt.Name)
+                .IsUnique();
         }
 
     }
