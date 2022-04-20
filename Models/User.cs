@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Apartment_Management.Models
@@ -25,5 +26,7 @@ namespace Apartment_Management.Models
         [Phone]
         [Column (name: "PhoneNumber")]
         public string PhoneNumber { get; set; }
+
+        public ICollection<Flat> Flats { get; set; }
     }
 }
