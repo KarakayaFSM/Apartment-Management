@@ -26,7 +26,13 @@ namespace Apartment_Management.Models
         [Phone]
         [Column (name: "PhoneNumber")]
         public string PhoneNumber { get; set; }
+        
+        [Required]
+        [Column(name: "ManagerId")]
+        public int ManagerId { get; set; }
 
         public ICollection<Flat> Flats { get; set; }
+
+        public ICollection<Message> Messages { get; set; }
     }
 }
