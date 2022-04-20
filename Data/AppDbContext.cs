@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Apartment_Management.Data
 {
-    public class UserDbContext : DbContext
+    public class AppDbContext : DbContext
     {
-        public UserDbContext(DbContextOptions<UserDbContext> options) : base(options) { }
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         public DbSet<User> Users { get; set; }
         public DbSet<Flat> Flats { get; set; }
@@ -17,7 +17,6 @@ namespace Apartment_Management.Data
         public DbSet<Payment> Payments { get; set; }
         public DbSet<BankCard> BankCards { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
-
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
