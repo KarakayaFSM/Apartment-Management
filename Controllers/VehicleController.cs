@@ -8,52 +8,52 @@ using Microsoft.EntityFrameworkCore;
 using Apartment_Management.Data;
 using Apartment_Management.Models;
 
-namespace Apartment_Management.Controllers.Billing
+namespace Apartment_Management.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class InvoiceTypeController : ControllerBase
+    public class VehicleController : ControllerBase
     {
         private readonly AppDbContext _context;
 
-        public InvoiceTypeController(AppDbContext context)
+        public VehicleController(AppDbContext context)
         {
             _context = context;
         }
 
-        // GET: api/InvoiceType
+        // GET: api/Vehicle
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<InvoiceType>>> GetBillTypes()
+        public async Task<ActionResult<IEnumerable<Vehicle>>> GetVehicles()
         {
-            return await _context.InvoiceTypes.ToListAsync();
+            return await _context.Vehicles.ToListAsync();
         }
 
-        // GET: api/InvoiceType/5
+        // GET: api/Vehicle/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<InvoiceType>> GetInvoiceType(int id)
+        public async Task<ActionResult<Vehicle>> GetVehicle(int id)
         {
-            var invoiceType = await _context.InvoiceTypes.FindAsync(id);
+            var vehicle = await _context.Vehicles.FindAsync(id);
 
-            if (invoiceType == null)
+            if (vehicle == null)
             {
                 return NotFound();
             }
 
-            return invoiceType;
+            return vehicle;
         }
 
-        // PUT: api/InvoiceType/5
+        // PUT: api/Vehicle/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutInvoiceType(int id, InvoiceType invoiceType)
+        public async Task<IActionResult> PutVehicle(int id, Vehicle vehicle)
         {
-            if (id != invoiceType.ID)
+            if (id != vehicle.ID)
             {
                 return BadRequest();
             }
 
-            _context.Entry(invoiceType).State = EntityState.Modified;
+            _context.Entry(vehicle).State = EntityState.Modified;
 
             try
             {
@@ -61,7 +61,7 @@ namespace Apartment_Management.Controllers.Billing
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!InvoiceTypeExists(id))
+                if (!VehicleExists(id))
                 {
                     return NotFound();
                 }
@@ -74,37 +74,37 @@ namespace Apartment_Management.Controllers.Billing
             return NoContent();
         }
 
-        // POST: api/InvoiceType
+        // POST: api/Vehicle
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<InvoiceType>> PostInvoiceType(InvoiceType invoiceType)
+        public async Task<ActionResult<Vehicle>> PostVehicle(Vehicle vehicle)
         {
-            _context.InvoiceTypes.Add(invoiceType);
+            _context.Vehicles.Add(vehicle);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetInvoiceType", new { id = invoiceType.ID }, invoiceType);
+            return CreatedAtAction("GetVehicle", new { id = vehicle.ID }, vehicle);
         }
 
-        // DELETE: api/InvoiceType/5
+        // DELETE: api/Vehicle/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<InvoiceType>> DeleteInvoiceType(int id)
+        public async Task<ActionResult<Vehicle>> DeleteVehicle(int id)
         {
-            var invoiceType = await _context.InvoiceTypes.FindAsync(id);
-            if (invoiceType == null)
+            var vehicle = await _context.Vehicles.FindAsync(id);
+            if (vehicle == null)
             {
                 return NotFound();
             }
 
-            _context.InvoiceTypes.Remove(invoiceType);
+            _context.Vehicles.Remove(vehicle);
             await _context.SaveChangesAsync();
 
-            return invoiceType;
+            return vehicle;
         }
 
-        private bool InvoiceTypeExists(int id)
+        private bool VehicleExists(int id)
         {
-            return _context.InvoiceTypes.Any(e => e.ID == id);
+            return _context.Vehicles.Any(e => e.ID == id);
         }
     }
 }

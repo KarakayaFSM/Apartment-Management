@@ -8,52 +8,52 @@ using Microsoft.EntityFrameworkCore;
 using Apartment_Management.Data;
 using Apartment_Management.Models;
 
-namespace Apartment_Management.Controllers.Billing
+namespace Apartment_Management.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class InvoiceTypeController : ControllerBase
+    public class MessageController : ControllerBase
     {
         private readonly AppDbContext _context;
 
-        public InvoiceTypeController(AppDbContext context)
+        public MessageController(AppDbContext context)
         {
             _context = context;
         }
 
-        // GET: api/InvoiceType
+        // GET: api/Message
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<InvoiceType>>> GetBillTypes()
+        public async Task<ActionResult<IEnumerable<Message>>> GetMessages()
         {
-            return await _context.InvoiceTypes.ToListAsync();
+            return await _context.Messages.ToListAsync();
         }
 
-        // GET: api/InvoiceType/5
+        // GET: api/Message/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<InvoiceType>> GetInvoiceType(int id)
+        public async Task<ActionResult<Message>> GetMessage(int id)
         {
-            var invoiceType = await _context.InvoiceTypes.FindAsync(id);
+            var message = await _context.Messages.FindAsync(id);
 
-            if (invoiceType == null)
+            if (message == null)
             {
                 return NotFound();
             }
 
-            return invoiceType;
+            return message;
         }
 
-        // PUT: api/InvoiceType/5
+        // PUT: api/Message/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutInvoiceType(int id, InvoiceType invoiceType)
+        public async Task<IActionResult> PutMessage(int id, Message message)
         {
-            if (id != invoiceType.ID)
+            if (id != message.ID)
             {
                 return BadRequest();
             }
 
-            _context.Entry(invoiceType).State = EntityState.Modified;
+            _context.Entry(message).State = EntityState.Modified;
 
             try
             {
@@ -61,7 +61,7 @@ namespace Apartment_Management.Controllers.Billing
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!InvoiceTypeExists(id))
+                if (!MessageExists(id))
                 {
                     return NotFound();
                 }
@@ -74,37 +74,37 @@ namespace Apartment_Management.Controllers.Billing
             return NoContent();
         }
 
-        // POST: api/InvoiceType
+        // POST: api/Message
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<InvoiceType>> PostInvoiceType(InvoiceType invoiceType)
+        public async Task<ActionResult<Message>> PostMessage(Message message)
         {
-            _context.InvoiceTypes.Add(invoiceType);
+            _context.Messages.Add(message);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetInvoiceType", new { id = invoiceType.ID }, invoiceType);
+            return CreatedAtAction("GetMessage", new { id = message.ID }, message);
         }
 
-        // DELETE: api/InvoiceType/5
+        // DELETE: api/Message/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<InvoiceType>> DeleteInvoiceType(int id)
+        public async Task<ActionResult<Message>> DeleteMessage(int id)
         {
-            var invoiceType = await _context.InvoiceTypes.FindAsync(id);
-            if (invoiceType == null)
+            var message = await _context.Messages.FindAsync(id);
+            if (message == null)
             {
                 return NotFound();
             }
 
-            _context.InvoiceTypes.Remove(invoiceType);
+            _context.Messages.Remove(message);
             await _context.SaveChangesAsync();
 
-            return invoiceType;
+            return message;
         }
 
-        private bool InvoiceTypeExists(int id)
+        private bool MessageExists(int id)
         {
-            return _context.InvoiceTypes.Any(e => e.ID == id);
+            return _context.Messages.Any(e => e.ID == id);
         }
     }
 }

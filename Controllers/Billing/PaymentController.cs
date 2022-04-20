@@ -12,48 +12,48 @@ namespace Apartment_Management.Controllers.Billing
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class InvoiceTypeController : ControllerBase
+    public class PaymentController : ControllerBase
     {
         private readonly AppDbContext _context;
 
-        public InvoiceTypeController(AppDbContext context)
+        public PaymentController(AppDbContext context)
         {
             _context = context;
         }
 
-        // GET: api/InvoiceType
+        // GET: api/Payment
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<InvoiceType>>> GetBillTypes()
+        public async Task<ActionResult<IEnumerable<Payment>>> GetPayments()
         {
-            return await _context.InvoiceTypes.ToListAsync();
+            return await _context.Payments.ToListAsync();
         }
 
-        // GET: api/InvoiceType/5
+        // GET: api/Payment/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<InvoiceType>> GetInvoiceType(int id)
+        public async Task<ActionResult<Payment>> GetPayment(int id)
         {
-            var invoiceType = await _context.InvoiceTypes.FindAsync(id);
+            var payment = await _context.Payments.FindAsync(id);
 
-            if (invoiceType == null)
+            if (payment == null)
             {
                 return NotFound();
             }
 
-            return invoiceType;
+            return payment;
         }
 
-        // PUT: api/InvoiceType/5
+        // PUT: api/Payment/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutInvoiceType(int id, InvoiceType invoiceType)
+        public async Task<IActionResult> PutPayment(int id, Payment payment)
         {
-            if (id != invoiceType.ID)
+            if (id != payment.ID)
             {
                 return BadRequest();
             }
 
-            _context.Entry(invoiceType).State = EntityState.Modified;
+            _context.Entry(payment).State = EntityState.Modified;
 
             try
             {
@@ -61,7 +61,7 @@ namespace Apartment_Management.Controllers.Billing
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!InvoiceTypeExists(id))
+                if (!PaymentExists(id))
                 {
                     return NotFound();
                 }
@@ -74,37 +74,37 @@ namespace Apartment_Management.Controllers.Billing
             return NoContent();
         }
 
-        // POST: api/InvoiceType
+        // POST: api/Payment
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<InvoiceType>> PostInvoiceType(InvoiceType invoiceType)
+        public async Task<ActionResult<Payment>> PostPayment(Payment payment)
         {
-            _context.InvoiceTypes.Add(invoiceType);
+            _context.Payments.Add(payment);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetInvoiceType", new { id = invoiceType.ID }, invoiceType);
+            return CreatedAtAction("GetPayment", new { id = payment.ID }, payment);
         }
 
-        // DELETE: api/InvoiceType/5
+        // DELETE: api/Payment/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<InvoiceType>> DeleteInvoiceType(int id)
+        public async Task<ActionResult<Payment>> DeletePayment(int id)
         {
-            var invoiceType = await _context.InvoiceTypes.FindAsync(id);
-            if (invoiceType == null)
+            var payment = await _context.Payments.FindAsync(id);
+            if (payment == null)
             {
                 return NotFound();
             }
 
-            _context.InvoiceTypes.Remove(invoiceType);
+            _context.Payments.Remove(payment);
             await _context.SaveChangesAsync();
 
-            return invoiceType;
+            return payment;
         }
 
-        private bool InvoiceTypeExists(int id)
+        private bool PaymentExists(int id)
         {
-            return _context.InvoiceTypes.Any(e => e.ID == id);
+            return _context.Payments.Any(e => e.ID == id);
         }
     }
 }
