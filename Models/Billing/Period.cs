@@ -11,6 +11,8 @@ namespace Apartment_Management.Models
         public string Name { get; set; }
         
         [Required]
+        [Display(Name = "Period Date")]
+        [DataType(DataType.Date)]
         public DateTime PeriodDate { get; set; }
     }
 }
