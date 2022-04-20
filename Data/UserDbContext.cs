@@ -51,6 +51,8 @@ namespace Apartment_Management.Data
             modelBuilder.Entity<Message>().ToTable("Message");
 
             modelBuilder.Entity<Payment>().ToTable("Payment");
+
+            modelBuilder.Entity<BankCard>().ToTable("BankCard");
         }
 
     }
