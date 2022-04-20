@@ -11,7 +11,7 @@
     public class Flat
     {
         public int FlatID { get; set; }
-        public string Block { get; set; }
+        public string BlockCode { get; set; }
         public bool IsFull { get; set; }
         public FlatSize FlatSize { get; set; }
         public int Floor { get; set; }

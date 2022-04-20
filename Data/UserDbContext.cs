@@ -25,7 +25,9 @@ namespace Apartment_Management.Data
                 .HasIndex(u => u.PhoneNumber)
                 .IsUnique();
 
-            modelBuilder.Entity<Flat>().ToTable("Flat");
+            modelBuilder.Entity<Flat>()
+                .ToTable("Flat")
+                .HasKey(f => new {f.BlockCode, f.DoorNum});
 
             modelBuilder.Entity<FlatAssignment>()
                 .ToTable("FlatAssignment")
