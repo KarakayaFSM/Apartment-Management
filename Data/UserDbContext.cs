@@ -24,6 +24,14 @@ namespace Apartment_Management.Data
             modelBuilder.Entity<User>()
                 .HasIndex(u => u.PhoneNumber)
                 .IsUnique();
+
+            modelBuilder.Entity<Flat>().ToTable("Flat");
+
+            modelBuilder.Entity<FlatAssignment>().ToTable("FlatAssignment");
+
+            modelBuilder.Entity<FlatAssignment>()
+                .HasIndex(f => f.FlatID)
+                .IsUnique();
         }
 
     }
