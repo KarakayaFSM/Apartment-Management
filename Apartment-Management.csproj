@@ -14,6 +14,20 @@
     <Compile Remove="Migrations\20220420224339_InitialCreate.Designer.cs" />
     <Compile Remove="Migrations\20220420225307_InitialCreate.cs" />
     <Compile Remove="Migrations\20220420225307_InitialCreate.Designer.cs" />
+    <Compile Remove="Migrations\20220421083706_FlatRemoveFlatSizeConversion.cs" />
+    <Compile Remove="Migrations\20220421083706_FlatRemoveFlatSizeConversion.Designer.cs" />
+    <Compile Remove="Migrations\20220421084210_FlatRemoveFlatSizeConversion.cs" />
+    <Compile Remove="Migrations\20220421084210_FlatRemoveFlatSizeConversion.Designer.cs" />
+    <Compile Remove="Migrations\20220421084507_FlatRemoveFlatSizeConversion.cs" />
+    <Compile Remove="Migrations\20220421084507_FlatRemoveFlatSizeConversion.Designer.cs" />
+    <Compile Remove="Migrations\20220421085010_FlatSizeRemoveEnum.cs" />
+    <Compile Remove="Migrations\20220421085010_FlatSizeRemoveEnum.Designer.cs" />
+    <Compile Remove="Migrations\20220421085722_FlatSizeRemoveEnum.cs" />
+    <Compile Remove="Migrations\20220421085722_FlatSizeRemoveEnum.Designer.cs" />
+    <Compile Remove="Migrations\20220421091744_FlatFlatSizeRelations.cs" />
+    <Compile Remove="Migrations\20220421091744_FlatFlatSizeRelations.Designer.cs" />
+    <Compile Remove="Migrations\20220421092742_FlatAddFlatSizeID.cs" />
+    <Compile Remove="Migrations\20220421092742_FlatAddFlatSizeID.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,10 +38,6 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>

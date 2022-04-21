@@ -4,14 +4,16 @@ using Apartment_Management.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Apartment_Management.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220421112429_FlatRemoveUser")]
+    partial class FlatRemoveUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -70,10 +72,6 @@ namespace Apartment_Management.Migrations
                     b.Property<int>("DoorNum")
                         .HasColumnType("int");
 
-                    b.Property<string>("FlatLabel")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("FlatSize")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -85,9 +83,6 @@ namespace Apartment_Management.Migrations
                         .HasColumnType("bit");
 
                     b.HasKey("ID");
-
-                    b.HasIndex("FlatLabel")
-                        .IsUnique();
 
                     b.HasIndex("BlockCode", "DoorNum")
                         .IsUnique();

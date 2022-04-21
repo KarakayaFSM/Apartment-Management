@@ -3,28 +3,20 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Apartment_Management.Models
 {
-
-    public enum FlatSize { 
-        ONE_PLUS_ONE,
-        TWO_PLUS_ONE,
-        THREE_PLUS_ONE,
-        FOUR_PLUS_ONE
-    }
-
     public class Flat
     {
         public int ID { get; set; }
         [Required]
-        public string BlockCode { get; set; }
-        public bool IsFull { get; set; }
+        public string FlatLabel { get; set; }
         [Required]
-        public FlatSize FlatSize { get; set; }
+        public string BlockCode { get; set; }
+        public bool IsFull { get; set; } = false;
+        [Required]
+        public string FlatSize { get; set; }
         [Required]
         public int Floor { get; set; }
         [Required]
         public int DoorNum { get; set; }
-        public int UserID { get; set; }
-        public User User { get; set; }
         public ICollection<Invoice> Invoices { get; set; }
         public ICollection<Payment> Payments { get; set; }
     }

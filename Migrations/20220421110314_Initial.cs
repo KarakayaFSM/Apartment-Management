@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Apartment_Management.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -85,7 +85,7 @@ namespace Apartment_Management.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     BlockCode = table.Column<string>(nullable: false),
                     IsFull = table.Column<bool>(nullable: false),
-                    FlatSize = table.Column<int>(nullable: false),
+                    FlatSize = table.Column<string>(nullable: false),
                     Floor = table.Column<int>(nullable: false),
                     DoorNum = table.Column<int>(nullable: false),
                     UserID = table.Column<int>(nullable: false)

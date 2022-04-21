@@ -39,6 +39,10 @@ namespace Apartment_Management.Data
                 .HasIndex(f => new { f.BlockCode, f.DoorNum })
                 .IsUnique();
 
+            modelBuilder.Entity<Flat>()
+                .HasIndex(f => f.FlatLabel)
+                .IsUnique();
+
             modelBuilder.Entity<FlatAssignment>()
                 .ToTable("FlatAssignment")
                 .HasIndex(f => f.FlatID)

@@ -4,14 +4,16 @@ using Apartment_Management.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Apartment_Management.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220421111500_UserRemoveManagerID")]
+    partial class UserRemoveManagerID
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -70,10 +72,6 @@ namespace Apartment_Management.Migrations
                     b.Property<int>("DoorNum")
                         .HasColumnType("int");
 
-                    b.Property<string>("FlatLabel")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("FlatSize")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -84,10 +82,12 @@ namespace Apartment_Management.Migrations
                     b.Property<bool>("IsFull")
                         .HasColumnType("bit");
 
+                    b.Property<int>("UserID")
+                        .HasColumnType("int");
+
                     b.HasKey("ID");
 
-                    b.HasIndex("FlatLabel")
-                        .IsUnique();
+                    b.HasIndex("UserID");
 
                     b.HasIndex("BlockCode", "DoorNum")
                         .IsUnique();
@@ -299,6 +299,15 @@ namespace Apartment_Management.Migrations
                 {
                     b.HasOne("Apartment_Management.Models.User", "User")
                         .WithMany("Cards")
+                        .HasForeignKey("UserID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Apartment_Management.Models.Flat", b =>
+                {
+                    b.HasOne("Apartment_Management.Models.User", "User")
+                        .WithMany()
                         .HasForeignKey("UserID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

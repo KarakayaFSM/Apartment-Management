@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Apartment_Management.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220420231204_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20220421110314_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -72,8 +72,9 @@ namespace Apartment_Management.Migrations
                     b.Property<int>("DoorNum")
                         .HasColumnType("int");
 
-                    b.Property<int>("FlatSize")
-                        .HasColumnType("int");
+                    b.Property<string>("FlatSize")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Floor")
                         .HasColumnType("int");
