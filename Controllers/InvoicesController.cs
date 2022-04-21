@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Apartment_Management.Data;
 using Apartment_Management.Models;
 
-namespace Apartment_Management.Controllers.Billing
+namespace Apartment_Management.Controllers
 {
     public class InvoicesController : Controller
     {
@@ -61,7 +61,7 @@ namespace Apartment_Management.Controllers.Billing
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,PeriodID,InvoiceTypeID,FlatID")] Invoice invoice)
+        public async Task<IActionResult> Create([Bind("ID,PeriodID,InvoiceTypeID,FlatID,Amount")] Invoice invoice)
         {
             if (ModelState.IsValid)
             {
@@ -99,7 +99,7 @@ namespace Apartment_Management.Controllers.Billing
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,PeriodID,InvoiceTypeID,FlatID")] Invoice invoice)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,PeriodID,InvoiceTypeID,FlatID,Amount")] Invoice invoice)
         {
             if (id != invoice.ID)
             {

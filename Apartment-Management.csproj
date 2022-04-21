@@ -28,6 +28,8 @@
     <Compile Remove="Migrations\20220421091744_FlatFlatSizeRelations.Designer.cs" />
     <Compile Remove="Migrations\20220421092742_FlatAddFlatSizeID.cs" />
     <Compile Remove="Migrations\20220421092742_FlatAddFlatSizeID.Designer.cs" />
+    <Compile Remove="Migrations\20220421122957_InvoiceAddAmountFromType.cs" />
+    <Compile Remove="Migrations\20220421122957_InvoiceAddAmountFromType.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
